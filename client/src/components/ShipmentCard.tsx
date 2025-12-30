@@ -1,6 +1,6 @@
 /**
  * Design: Swiss Modernism meets Digital Utility
- * Compact card displaying shipment details with edit/delete actions
+ * Compact card displaying shipment dimensions with edit/delete actions
  */
 
 import { Shipment } from "@/types/shipment";
@@ -23,27 +23,17 @@ export function ShipmentCard({ shipment, onEdit, onDelete }: ShipmentCardProps) 
         </div>
         
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-sm text-foreground truncate">
-            {shipment.name}
-          </h3>
-          <p className="text-xs text-muted-foreground mt-0.5 truncate">
-            {shipment.street1}
-          </p>
-          <p className="text-xs text-muted-foreground truncate">
-            {shipment.city}, {shipment.state} {shipment.zipcode}
-          </p>
-          
-          <div className="flex items-center gap-3 mt-2 text-xs">
-            <span className="font-mono text-muted-foreground">
-              <span className="font-semibold">L×W×H:</span> {shipment.length}×{shipment.width}×{shipment.height}"
-            </span>
-            <span className="font-mono text-muted-foreground">
-              <span className="font-semibold">Weight:</span> {shipment.weight} lb
+          <div className="flex items-center gap-2 mb-2">
+            <h3 className="font-semibold text-sm text-foreground">
+              {shipment.length}×{shipment.width}×{shipment.height}"
+            </h3>
+            <span className="text-xs font-mono text-muted-foreground bg-muted px-2 py-1 rounded">
+              {shipment.weight} lb
             </span>
           </div>
           
           {shipment.reference && (
-            <div className="mt-1.5 text-xs text-muted-foreground">
+            <div className="text-xs text-muted-foreground">
               <span className="font-semibold">Ref:</span> {shipment.reference}
             </div>
           )}

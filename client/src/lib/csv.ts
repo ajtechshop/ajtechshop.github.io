@@ -2,6 +2,7 @@ import { Shipment } from "@/types/shipment";
 
 /**
  * Converts an array of shipments to FedEx-compatible CSV format
+ * Simplified version with only dimensions, weight, and reference
  */
 export function generateCSV(shipments: Shipment[]): string {
   // FedEx CSV headers (all lowercase as per spec)
@@ -36,22 +37,22 @@ export function generateCSV(shipments: Shipment[]): string {
     "order_name"
   ];
 
-  // Create CSV rows
+  // Create CSV rows - all address fields empty, only dimensions/weight/reference populated
   const rows = shipments.map(shipment => [
-    "", // company - left empty for internal use
-    escapeCSVField(shipment.name), // attention (recipient name)
-    escapeCSVField(shipment.street1),
-    escapeCSVField(shipment.street2 || ""),
-    escapeCSVField(shipment.city),
-    escapeCSVField(shipment.state),
-    escapeCSVField(shipment.zipcode),
+    "", // company
+    "", // attention
+    "", // street1
+    "", // street2
+    "", // city
+    "", // state
+    "", // zipcode
     shipment.width.toString(),
     shipment.height.toString(),
     shipment.length.toString(),
     shipment.weight.toString(),
     "FEDEX", // Default carrier
     "FEDEX_GROUND", // Default service
-    escapeCSVField(shipment.phone),
+    "", // phone
     escapeCSVField(shipment.reference), // reference1 - INV# or SO#
     "", // reference2 - not used
     "", // invoice
@@ -61,7 +62,7 @@ export function generateCSV(shipments: Shipment[]): string {
     "", // email1
     "", // email2
     "", // email3
-    shipment.residential ? "true" : "", // residential
+    "", // residential
     "", // fedex_po
     "", // fedex_dp
     "", // box
