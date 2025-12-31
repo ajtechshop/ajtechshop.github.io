@@ -112,30 +112,33 @@ export default function Home() {
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-background to-background">
       {/* Header */}
       <header className="relative pt-16 pb-12 overflow-hidden">
-        <div className="container relative z-10 text-center space-y-6">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="absolute left-8 top-8"
-          >
-            <Link href="/">
-              <Button variant="ghost" className="gap-2 text-muted-foreground hover:text-primary transition-colors">
-                <LayoutGrid className="w-4 h-4" />
-                Back to Hub
-              </Button>
-            </Link>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="flex justify-center mb-2"
-          >
-            <img
-              src="https://www.ajtech.shop/web/image/website/1/logo/AJ%20TECH?unique=0d0ff7c"
-              alt="AJ TECH Logo"
-              className="h-20 lg:h-24 w-auto object-contain drop-shadow-md"
-            />
-          </motion.div>
+        <div className="container relative z-10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="sm:absolute sm:left-0 sm:top-1/2 sm:-translate-y-1/2 order-2 sm:order-1"
+            >
+              <Link href="/">
+                <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-primary transition-colors bg-background/50 backdrop-blur-sm border border-divider sm:border-transparent">
+                  <LayoutGrid className="w-4 h-4" />
+                  Back to Hub
+                </Button>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="flex justify-center order-1 sm:order-2"
+            >
+              <img
+                src="https://www.ajtech.shop/web/image/website/1/logo/AJ%20TECH?unique=0d0ff7c"
+                alt="AJ TECH Logo"
+                className="h-16 lg:h-24 w-auto object-contain drop-shadow-md"
+              />
+            </motion.div>
+          </div>
           <div className="space-y-2">
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
